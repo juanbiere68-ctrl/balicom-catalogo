@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Balicom</title>
+<meta name="description" content="Vapers premium en Uruguay: las mejores marcas, mejor precio. Envíos en 30 minutos a todo el país.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0d0714;
+    --bg-raised: #170f26;
+    --bg-card: #150c22;
+    --ink: #f4f0fb;
+    --ink-dim: #cbc0e0;
+    --smoke: #9689b8;
+    --smoke-dim: #5c5279;
+    --accent: #ff2e9e;
+    --accent-2: #8b5cf6;
+    --accent-3: #22d3ee;
+    --thc: #f2b705;
+    --line: rgba(244,240,251,0.09);
+    --line-strong: rgba(244,240,251,0.18);
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--bg);}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  h1,h2,h3{text-wrap:balance; margin:0;}
+  a{color:inherit;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--accent-3);
+  }
+
+  /* ---- Nav ---- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,7,20,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:var(--maxw); margin:0 auto;
+  }
+  .wordmark{
+    font-family:'Anton',sans-serif; font-size:22px; letter-spacing:.02em;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .nav-cta{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.03em;
+    border:1px solid var(--line-strong); padding:9px 16px; border-radius:999px;
+    text-decoration:none; color:var(--ink); white-space:nowrap;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .nav-cta:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* ---- Hero ---- */
+  .hero{position:relative; padding:80px 0 70px; overflow:hidden; border-bottom:1px solid var(--line);}
+  .hero::before{
+    content:""; position:absolute; top:-40%; left:-10%;
+    width:800px; height:800px;
+    background:radial-gradient(circle, rgba(139,92,246,0.28), rgba(139,92,246,0.05) 45%, transparent 70%);
+    filter:blur(20px); pointer-events:none;
+  }
+  .hero::after{
+    content:""; position:absolute; bottom:-30%; right:-8%;
+    width:700px; height:700px;
+    background:radial-gradient(circle, rgba(255,46,158,0.24), rgba(255,46,158,0.04) 45%, transparent 70%);
+    filter:blur(20px); pointer-events:none;
+  }
+  .hero-grid{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
+  }
+  .hero h1{
+    font-family:'Anton',sans-serif; font-weight:400;
+    font-size:clamp(38px,6vw,64px); line-height:1.02; letter-spacing:.01em;
+  }
+  .hero h1 .g{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero .lead{
+    margin-top:20px; font-size:16px; line-height:1.6; color:var(--ink-dim); max-width:46ch;
+  }
+  .stars{color:var(--thc); letter-spacing:2px; margin-top:18px; font-size:15px;}
+  .cta-row{margin-top:30px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#0d0714; font-weight:700; font-size:15px;
+    padding:15px 28px; border-radius:999px; text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 10px 34px -10px rgba(255,46,158,0.55);}
+  .btn-primary svg{width:17px; height:17px;}
+  .btn-ghost{
+    display:inline-flex; align-items:center; font-family:'IBM Plex Mono',monospace;
+    font-size:12px; color:var(--ink-dim); border:1px solid var(--line-strong);
+    padding:14px 22px; border-radius:999px; text-decoration:none;
+  }
+
+  .hero-badge{
+    position:relative; aspect-ratio:4/5; border-radius:18px;
+    background:
+      radial-gradient(120% 90% at 15% 10%, rgba(255,46,158,0.35), transparent 55%),
+      radial-gradient(120% 90% at 85% 90%, rgba(139,92,246,0.4), transparent 55%),
+      linear-gradient(160deg,#1c1130,#0d0714 70%);
+    border:1px solid var(--line-strong);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:30px;
+    box-shadow:0 30px 80px -30px rgba(139,92,246,0.4);
+  }
+  .hero-badge .tag{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.2em; color:var(--accent-3); text-transform:uppercase;}
+  .hero-badge .big{
+    font-family:'Anton',sans-serif; font-size:clamp(30px,5vw,46px); line-height:1;
+    margin-top:14px;
+    background:linear-gradient(90deg,#fff,var(--accent-3));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-badge .mid{font-family:'Anton',sans-serif; font-size:20px; margin-top:16px; color:var(--ink);}
+  .hero-badge .small{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--smoke); margin-top:20px; letter-spacing:.08em;}
+
+  /* ---- Marquee ---- */
+  .marquee-wrap{
+    border-bottom:1px solid var(--line); background:var(--bg-raised);
+    overflow:hidden; padding:14px 0;
+  }
+  .marquee{display:flex; width:max-content; gap:48px; animation:scroll 26s linear infinite;}
+  .marquee span{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.08em;
+    color:var(--ink-dim); white-space:nowrap; text-transform:uppercase;
+  }
+  .marquee span b{color:var(--accent-3);}
+  @keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  /* ---- Catalog ---- */
+  .catalog{padding:80px 0;}
+  .cat-head{margin-bottom:44px; max-width:640px;}
+  .cat-head h2{font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(28px,4vw,42px); line-height:1.05; margin-top:10px;}
+  .cat-head p{color:var(--smoke); margin-top:12px; font-size:15px;}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px;}
+  .card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:16px;
+    padding:0; overflow:hidden; display:flex; flex-direction:column;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .card:hover{border-color:var(--line-strong); transform:translateY(-2px);}
+  .card-media{
+    aspect-ratio:1/1; width:100%; position:relative;
+    background:
+      radial-gradient(120% 90% at 15% 10%, rgba(255,46,158,0.22), transparent 55%),
+      radial-gradient(120% 90% at 85% 90%, rgba(139,92,246,0.26), transparent 55%),
+      linear-gradient(160deg,#1c1130,#0d0714 70%);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .card.thc .card-media{
+    background:
+      radial-gradient(120% 90% at 15% 10%, rgba(242,183,5,0.22), transparent 55%),
+      radial-gradient(120% 90% at 85% 90%, rgba(242,183,5,0.10), transparent 55%),
+      linear-gradient(160deg,#241a08,#0d0714 70%);
+  }
+  .card-media img{width:100%; height:100%; object-fit:cover; display:block;}
+  .card-media .media-ph{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em;
+    color:var(--smoke-dim); text-transform:uppercase;
+  }
+  .card-body{padding:22px 24px 24px; display:flex; flex-direction:column; gap:14px; flex:1;}
+  .card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
+  .card h3{font-family:'Anton',sans-serif; font-weight:400; font-size:22px; letter-spacing:.01em;}
+  .badges{display:flex; gap:6px; flex-wrap:wrap;}
+  .badge{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.04em;
+    padding:4px 9px; border-radius:999px; white-space:nowrap;
+    background:rgba(34,211,238,0.12); color:var(--accent-3); border:1px solid rgba(34,211,238,0.3);
+  }
+  .badge.thc{background:rgba(242,183,5,0.12); color:var(--thc); border-color:rgba(242,183,5,0.35);}
+  .price{
+    font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--ink);
+    display:flex; flex-direction:column; gap:2px;
+  }
+  .price b{color:var(--accent-3);}
+  .flavors{display:flex; flex-wrap:wrap; gap:6px; overflow:hidden; transition:max-height .25s ease;}
+  .flavors.collapsible{max-height:60px;}
+  .flavors.collapsible.expanded{max-height:600px;}
+  .flavors span{
+    font-size:11.5px; color:var(--ink-dim); background:rgba(244,240,251,0.05);
+    border:1px solid var(--line); padding:5px 9px; border-radius:999px;
+  }
+  .flavor-toggle{
+    display:inline-flex; margin-top:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600;
+    color:var(--accent-3); background:rgba(34,211,238,0.08);
+    border:1px solid rgba(34,211,238,0.3); padding:5px 10px; border-radius:999px;
+    cursor:pointer; white-space:nowrap;
+  }
+  .card.thc .flavor-toggle{color:var(--thc); background:rgba(242,183,5,0.08); border-color:rgba(242,183,5,0.35);}
+  .flavor-toggle:hover{filter:brightness(1.15);}
+  .card-cta{
+    margin-top:auto; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12.5px;
+    color:#0d0714; background:var(--accent-3); padding:11px 16px; border-radius:999px;
+    text-decoration:none; letter-spacing:.02em;
+  }
+  .card-cta:hover{filter:brightness(1.08);}
+  .card.thc .card-cta{background:var(--thc);}
+
+  .thc-divider{
+    margin:70px 0 34px; display:flex; align-items:center; gap:16px;
+  }
+  .thc-divider .line{flex:1; height:1px; background:var(--line);}
+  .thc-divider .label{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em;
+    color:var(--thc); text-transform:uppercase; white-space:nowrap;
+  }
+  .thc-note{
+    font-size:12.5px; color:var(--smoke); max-width:640px; margin:10px 0 30px;
+    font-family:'Inter',sans-serif; line-height:1.6;
+  }
+
+  /* ---- Trust strip ---- */
+  .trust{padding:70px 0; border-top:1px solid var(--line); text-align:center;}
+  .trust h2{font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(26px,4vw,40px); max-width:680px; margin:0 auto 30px; line-height:1.08;}
+  .trust h2 .g{background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+
+  /* ---- Footer ---- */
+  footer{padding:44px 0 56px; border-top:1px solid var(--line);}
+  .footer-inner{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px;}
+  .copy{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--smoke-dim);}
+  .footer-note{font-family:'Inter',sans-serif; font-size:12px; color:var(--smoke-dim); max-width:520px;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-badge{aspect-ratio:auto; padding:40px 24px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="wordmark">BALICOM</div>
+    <a class="nav-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">Hablá con nosotros</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Vapers premium · Uruguay</span>
+      <h1 style="margin-top:16px;">Más sabor. Más estilo. <span class="g">Más duración.</span></h1>
+      <p class="lead">Descubrí los vapers más elegidos del momento. Experiencia premium, sabores intensos y diseños que destacan. Entrega rápida y segura a cualquier parte del país.</p>
+      <div class="stars">★★★★★</div>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38c1.44.78 3.06 1.2 4.76 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.13c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+          Hablá con nosotros
+        </a>
+        <a class="btn-ghost" href="#catalogo">Ver catálogo ↓</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span class="tag">Las mejores marcas</span>
+      <span class="big">BALICOM</span>
+      <span class="mid">Mejor precio</span>
+      <span class="small">Envíos en 30 min · Todo el país · Todas las formas de pago</span>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>✓ <b>La mejor atención</b></span>
+    <span>✓ <b>Precios increíbles</b></span>
+    <span>✓ <b>Envíos en 30 minutos</b></span>
+    <span>✓ <b>Envíos a todo el país</b></span>
+    <span>✓ <b>Garantía total</b></span>
+    <span>✓ <b>Todas las formas de pago</b></span>
+    <span>✓ <b>La mejor atención</b></span>
+    <span>✓ <b>Precios increíbles</b></span>
+    <span>✓ <b>Envíos en 30 minutos</b></span>
+    <span>✓ <b>Envíos a todo el país</b></span>
+    <span>✓ <b>Garantía total</b></span>
+    <span>✓ <b>Todas las formas de pago</b></span>
+  </div>
+</div>
+
+<section class="catalog" id="catalogo">
+  <div class="wrap">
+    <div class="cat-head">
+      <span class="eyebrow">Catálogo</span>
+      <h2>Elegí tu vaper y pedilo por WhatsApp.</h2>
+      <p>Precios por unidad y por pack de 2. Todos los sabores disponibles en stock — confirmamos por WhatsApp.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-media" data-slot="quit-15000"><img src="img/quit-15000.jpg" alt="Quit 15000 — Blueberry Lemonade"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Quit</h3>
+          <div class="badges"><span class="badge">15.000 PUFFS</span><span class="badge">0% NIC</span></div>
+        </div>
+        <div class="price">1 unidad <b>$1.690</b> · Pack x2 <b>$3.100</b></div>
+        <div class="flavors">
+          <span>🧊 Lush ice</span><span>🍓 Strawberry watermelon</span><span>🔵 Blue mist</span><span>🍓 Strawberry banana</span><span>🫐 Blueberry lemonade</span>
+        </div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Quit%2015000." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media" data-slot="raz-25000-premium"><img src="img/raz-25000-premium.jpg" alt="Raz 25000 Premium"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Raz 25.000</h3>
+          <div class="badges"><span class="badge">PREMIUM</span></div>
+        </div>
+        <div class="price">1 unidad <b>$1.890</b> · Pack x2 <b>$3.500</b></div>
+        <div class="flavors">
+          <span>🍓 Strawberry orange</span><span>🐉 Iced blue dragon</span><span>🫐 Blueberry watermelon</span><span>🍒 Frozen cherry apple</span><span>🍌 Frozen bananas</span><span>🌿 Miami mint</span><span>🌴 Tropical gush</span><span>🍓 Strawberry peach</span><span>🍉 Watermelon ice</span><span>🍓 Strawberry burst</span><span>🍇 Triple berry</span><span>🍏 Sour apple ice</span>
+        </div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Raz%2025000%20Premium." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media" data-slot="lostmary-mt35000"><img src="img/lostmary-mt35000.jpg" alt="Lost Mary MT35000 Turbo"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Lost Mary 35.000</h3>
+          <div class="badges"><span class="badge">PREMIUM</span></div>
+        </div>
+        <div class="price">1 unidad <b>$1.890</b> · Pack x2 <b>$3.400</b></div>
+        <div class="flavors">
+          <span>🍋 Pink lemonade</span><span>🍌 Banana mint</span><span>🌿 Miami mint</span><span>🧊 Ice mint</span><span>🍉 Watermelon mist</span><span>🍊 Summer orange</span><span>🍇 Mountain berry</span><span>🫐 Blackberry blueberry</span><span>🚀 Rocket freeze</span><span>🍋 Blue razz lemonade</span><span>☀️ Sunny orange</span><span>🍓 Strawberry ice cream</span><span>🍏 Sour apple ice</span><span>🥝 Strawberry kiwi</span><span>🚬 Tobacco</span><span>🐉 Strawberry dragon lemonade</span>
+        </div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Lost%20Mary%2035000." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media" data-slot="lostmary-mo20000"><img src="img/lostmary-mo20000.jpg" alt="Lost Mary MO20000 Pro"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Lost Mary 20.000</h3>
+          <div class="badges"><span class="badge">PREMIUM</span></div>
+        </div>
+        <div class="price">1 unidad <b>$1.690</b> · Pack x2 <b>$3.100</b></div>
+        <div class="flavors">
+          <span>🥭 Mexican mango ice</span><span>🧊 Ice blue</span><span>🍓 Strawberry</span><span>🍉 Watermelon ice</span><span>🫐 Blueberry ice</span><span>🔵 Blue razz ice</span><span>🍈 Lime grape</span><span>🍉 Watermelon peach</span><span>🍑 Durazno</span><span>🚬 Habano ice</span><span>🥝 Kiwi durazno</span><span>🍏 Green apple ice</span>
+        </div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Lost%20Mary%2020000." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media" data-slot="lostmary-mt15000"><img src="img/lostmary-mt15000.jpg" alt="Lost Mary MT15000 Turbo"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Lost Mary 15.000</h3>
+          <div class="badges"><span class="badge">15.000 PUFFS</span></div>
+        </div>
+        <div class="price">1 unidad <b>$1.690</b> · Pack x2 <b>$3.100</b></div>
+        <div class="flavors">
+          <span>🍇 Baja berries</span><span>🍑 Durazno</span><span>🍒 Cereza</span><span>🍏 Uva manzana</span><span>🍊 Grapefruit berry</span><span>🍓 Frutilla</span><span>❄️ Winter mint</span><span>🔵 Blue razz ice</span><span>🍊 Naranja limón</span><span>🍓 Frutilla melón</span><span>🍉 Multifruta</span><span>🍇 Frambuesa y sandía</span>
+        </div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Lost%20Mary%2015000." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media" data-slot="urbar-hydra8000"><img src="img/urbar-hydra8000.jpg" alt="Urbar Hydra 8000"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Urbar Hydra</h3>
+          <div class="badges"><span class="badge">8.000 PUFFS</span></div>
+        </div>
+        <div class="price">1 unidad <b>$1.690</b> · Pack x2 <b>$3.100</b></div>
+        <div class="flavors">
+          <span>🫐 Blueberry</span><span>❄️ Winter mint</span><span>🌈 Rainbow candy</span><span>🍬 Pink burst</span><span>🐻 Melted gummy bear</span>
+        </div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Urbar%20Hydra%208000." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media" data-slot="raz-25000-zeronic"><img src="img/raz-25000-zeronic.jpg" alt="Raz 25000 Zero Nic"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Raz 25.000</h3>
+          <div class="badges"><span class="badge">ZERO NIC</span></div>
+        </div>
+        <div class="price">1 unidad <b>$1.890</b> · Pack x2 <b>$3.500</b></div>
+        <div class="flavors">
+          <span>🌿 Miami mint</span><span>🍓 Strawberry burst</span><span>🫐 Blueberry watermelon</span><span>✨ Razzle dazzle</span>
+        </div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Raz%2025000%20Zero%20Nic." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-media" data-slot="ignite-6000"><img src="img/ignite-6000.jpg" alt="Ignite 6000"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Ignite</h3>
+          <div class="badges"><span class="badge">6.000 PUFFS</span></div>
+        </div>
+        <div class="price">1 unidad <b>$990</b> · Pack x2 <b>$1.800</b></div>
+        <div class="flavors">
+          <span>🧊 Ice mint</span><span>🍒 Cherry frescada</span><span>🥭 Mango frutal</span><span>🍉 Watermelon ice</span><span>🥝 Manzana y kiwi</span>
+        </div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Ignite%206000." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="thc-divider">
+      <span class="line"></span>
+      <span class="label">⚠ Línea THC — venta exclusiva a mayores de edad</span>
+      <span class="line"></span>
+    </div>
+    <p class="thc-note">Los siguientes productos contienen THC. Antes de publicar esta sección, confirmá con el cliente el marco legal vigente en Uruguay para su comercialización — esta página no reemplaza esa verificación.</p>
+
+    <div class="grid">
+      <div class="card thc">
+        <div class="card-media" data-slot="elfthc-3000"><img src="img/elfthc-3000.jpg" alt="ELFTHC 3000mg"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>ELFTHC</h3>
+          <div class="badges"><span class="badge thc">3.000 MG</span></div>
+        </div>
+        <div class="price">Precio <b>$1.890</b></div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20ELFTHC%203000mg." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card thc">
+        <div class="card-media" data-slot="phenom-6500"><img src="img/phenom-6500.jpg" alt="Phenom 6500mg THC"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Phenom</h3>
+          <div class="badges"><span class="badge thc">6.500 MG</span></div>
+        </div>
+        <div class="price">Precio <b>$2.590</b> c/u — oferta por tiempo limitado</div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Phenom%206500mg." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+
+      <div class="card thc">
+        <div class="card-media" data-slot="pulse-thc-5000"><img src="img/pulse-thc-5000.jpg" alt="Pulse THC Premium 5000mg"></div>
+        <div class="card-body">
+        <div class="card-top">
+          <h3>Pulse THC</h3>
+          <div class="badges"><span class="badge thc">5.000 MG</span><span class="badge thc">PREMIUM</span></div>
+        </div>
+        <div class="price">Precio <b>$2.400</b> — oferta</div>
+        <a class="card-cta" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20pedir%20el%20Pulse%20THC%205000mg." target="_blank" rel="noopener">Pedí el tuyo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <h2>Pedilo hoy, <span class="g">llega en 30 minutos.</span></h2>
+    <a class="btn-primary" href="https://wa.me/59892563418?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38c1.44.78 3.06 1.2 4.76 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.13c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.11-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+      Hablá con nosotros
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="copy">© 2026 BALICOM — Uruguay</span>
+    <span class="footer-note">Venta de productos para vapeo. La línea THC es de venta exclusiva a mayores de edad, sujeta a la normativa vigente.</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.flavors').forEach(function(el){
+    el.classList.add('collapsible');
+    var overflowing = el.scrollHeight > el.clientHeight + 2;
+    if(!overflowing){
+      el.classList.remove('collapsible');
+      return;
+    }
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'flavor-toggle';
+    btn.textContent = 'Ver más';
+    btn.addEventListener('click', function(){
+      var expanded = el.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Ver menos' : 'Ver más';
+    });
+    el.insertAdjacentElement('afterend', btn);
+  });
+</script>
+
+</body>
+</html>
