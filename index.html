@@ -147,6 +147,22 @@
   .marquee span b{color:var(--accent-3);}
   @keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
 
+  /* ---- Promo banner ---- */
+  .promo{padding:36px 0;}
+  .promo-card{
+    background:var(--bg-card); border:1px solid var(--line-strong); border-radius:18px;
+    padding:26px 30px; display:flex; align-items:center; justify-content:space-between;
+    gap:20px; flex-wrap:wrap;
+  }
+  .promo-text .eyebrow{margin-bottom:6px; display:block;}
+  .promo-text h3{font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(18px,3vw,24px);}
+  .promo-text h3 .g{background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .promo-dots{display:flex; gap:8px;}
+  .promo-dot{
+    width:26px; height:26px; border-radius:50%;
+    border:1.5px dashed var(--line-strong);
+  }
+
   /* ---- Catalog ---- */
   .catalog{padding:80px 0;}
   .cat-head{margin-bottom:44px; max-width:640px;}
@@ -303,6 +319,21 @@
     <span>✓ <b>Todas las formas de pago</b></span>
   </div>
 </div>
+
+<section class="promo">
+  <div class="wrap">
+    <div class="promo-card">
+      <div class="promo-text">
+        <span class="eyebrow">Promo activa</span>
+        <h3>Juntá 6 stickers de compra y llevate <span class="g">1 vape gratis</span> a elección.</h3>
+      </div>
+      <div class="promo-dots">
+        <span class="promo-dot"></span><span class="promo-dot"></span><span class="promo-dot"></span>
+        <span class="promo-dot"></span><span class="promo-dot"></span><span class="promo-dot"></span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="catalog" id="catalogo">
   <div class="wrap">
